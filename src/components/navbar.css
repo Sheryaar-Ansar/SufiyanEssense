@@ -1,0 +1,76 @@
+.hover-underline{
+    position: relative;
+    cursor: pointer;
+}
+.hover-underline::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -1px;
+    left: 0;
+    background-color: black;
+    transition: width 0.3s;
+}
+.hover-underline:hover::after{
+    width: 100%;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+@keyframes slideCart {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideCart {
+  animation: slideCart 0.35s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideCart {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.animate-slideCart { animation: slideCart 0.35s ease-out forwards; }
+
+/* The code uses animate-slideCart class in JSX, but Tailwind might not know the class.
+   If using plain CSS classes, make sure your drawer element includes `animate-slideCart` class.
+*/
+
+/* Slide down for mobile menu */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slideDown { animation: slideDown 0.25s ease-out forwards; }
+
+/* Optional small utility to hide scrollbar nicely in drawer */
+.cart-scroll::-webkit-scrollbar { width: 8px; }
+.cart-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 999px; }
+
