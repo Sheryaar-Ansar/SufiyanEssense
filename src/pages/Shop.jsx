@@ -11,6 +11,7 @@ const Shop = () => {
     const [view, setView] = useState("grid");
     const [showSidebar, setShowSidebar] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState([]);
+    const [reviews, setReviews] = useState([])
 
 
 
@@ -29,7 +30,28 @@ const Shop = () => {
     const loadProducts = async () => {
         try {
             const res = await service.getAllProducts();
-            setProducts(res.data.products);
+            const productsData = res.data.products;
+            setProducts(productsData);
+
+            // Only now fetch reviews
+            const reviewPromises = productsData.map(product =>
+                service.getReviewByProduct(product._id)
+                    .then(res => [product._id, res.data.reviews || []])
+                    .catch(() => [product._id, []])
+            );
+
+            const reviewsData = await Promise.allSettled(reviewPromises);
+
+            const reviewsMap = {};
+            reviewsData.forEach(item => {
+                if (item.status === "fulfilled") {
+                    const [id, rev] = item.value;
+                    reviewsMap[id] = rev;
+                }
+            });
+
+            setReviews(reviewsMap);
+            console.log("Reviews map:", reviewsMap); // ✅ should show now
         } catch (error) {
             console.error("Failed to load products");
         }
@@ -46,6 +68,7 @@ const Shop = () => {
             console.error("Failed to load categories");
         }
     };
+
     const capitalizeWords = (sentence) => {
         return sentence
             .split(" ")
@@ -68,7 +91,7 @@ const Shop = () => {
     return (
         <div>
             {/* // Updated: Base background is a very light gray for modern depth. */}
-            <div className="w-full h-screen-75 lg:h-screen bg-red-500 overflow-hidden">
+            <div className="w-full h-screen-75 lg:h-screen overflow-hidden">
                 <img
                     src={hero}
                     alt="Hero Background"
@@ -255,12 +278,14 @@ const Shop = () => {
 
                                     <div className="flex items-center justify-between gap-1 pt-1">
                                         <div className="flex items-center gap-1">
-                                            {/* Updated: Stars are a deep gold/amber color for contrast */}
-                                            <span className="text-amber-500 text-base">★★★★★</span>
+                                            <span className="text-amber-500 text-base">
+                                                {"★".repeat(reviews[product._id]?.length ? Math.round(reviews[product._id].reduce((a, b) => a + b.rating, 0) / reviews[product._id].length) : 0)}
+                                            </span>
                                             <span className="text-gray-500 text-xs font-light">
-                                                ({product.reviews})
+                                                ({reviews[product._id]?.length || 0})
                                             </span>
                                         </div>
+
                                         <div>
                                             {/* Updated: Stock badge with subtle background */}
                                             <h1 className="text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded-full">{product.stock} left</h1>

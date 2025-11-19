@@ -8,6 +8,10 @@ import Home from './pages/Home'
 import ContactUs from './pages/Contactus'
 import AboutUs from './pages/AboutUs'
 import { useCart } from './contexts/CartContext'
+import Checkout from './pages/Checkout'
+import ThankYou from './pages/ThankYou'
+import WhatsAppButton from './components/WhatsappButton'
+import Deals from './pages/Deals'
 function App() {
   const { loadCart, cart } = useCart()
   useEffect(() => {
@@ -28,9 +32,13 @@ function App() {
               <Route path='/perfumes/:id' element={<ShopDetails />} />
               <Route path='/contact' element={<ContactUs />} />
               <Route path='/about' element={<AboutUs />} />
+              <Route path='/checkout' element={ <Checkout /> } />
+              <Route path='/thank-you' element={<ThankYou/>} />
+              <Route path='/deals' element={<Deals/>} />
 
             </Routes>
           </main>
+          <WhatsAppButton/>
           <Footer />
         </div>
       </Router>

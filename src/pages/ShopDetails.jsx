@@ -12,7 +12,7 @@ import { useCart } from "../contexts/CartContext";
 const ShopDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { addToCart, setIsCartOpen } = useCart()
+    const { addToCart, setIsCartOpen, loadCart } = useCart()
 
     const [product, setProduct] = useState(null);
     const [mainImage, setMainImage] = useState("");
@@ -99,7 +99,8 @@ const ShopDetails = () => {
     //   console.log('Reviews', product)
     const handleAddToCart = async (id, quantity, product) => {
         await addToCart(id, quantity, product);
-            setIsCartOpen(true); // <-- open drawer after cart updates
+        setIsCartOpen(true); // <-- open drawer after cart updates
+        loadCart()
         // console.log(addToCart)
         
     }

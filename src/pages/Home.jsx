@@ -6,11 +6,13 @@ import { ArrowRight, Star } from 'lucide-react' // Added Star for reviews
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import { useCart } from '../contexts/CartContext';
 
 const Home = () => {
   const [products, setProducts] = useState([])
   const [reviews, setReviews] = useState([])
   const [allReviews, setAllReviews] = useState(0)
+  const { cart, loadCart } = useCart()
   const loadProducts = async () => {
     try {
       const res = await service.getAllProducts()
@@ -55,7 +57,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    loadProducts(), loadReviews()
+    loadProducts(), loadReviews(), cart, loadCart
   }, [])
 
   // Placeholder navigate function (assuming it's available from react-router-dom)
