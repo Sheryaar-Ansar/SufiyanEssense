@@ -1,7 +1,9 @@
 import { Facebook, Instagram } from 'lucide-react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+    const navigate = useNavigate()
     return (
         <footer className="bg-gray-900 text-gray-300 py-10 px-6 md:px-16 mt-auto">
 
@@ -12,7 +14,7 @@ const Footer = () => {
                 <div>
                     <h1 className="text-lg font-semibold text-white mb-3">About</h1>
                     <ul className="space-y-2 text-sm">
-                        <li className="hover:text-white transition-colors duration-200 cursor-pointer">FAQs</li>
+                        <li className="hover:text-white transition-colors duration-200 cursor-pointer" onClick={()=>navigate('/faqs')}>FAQs</li>
                         <li className="hover:text-white transition-colors duration-200 cursor-pointer">Our Story</li>
                         <li className="hover:text-white transition-colors duration-200 cursor-pointer">Media Page</li>
                     </ul>
@@ -22,9 +24,9 @@ const Footer = () => {
                 <div>
                     <h1 className="text-lg font-semibold text-white mb-3">Support</h1>
                     <ul className="space-y-2 text-sm">
-                        <li className="hover:text-white transition-colors duration-200 cursor-pointer">Shipping Policy</li>
-                        <li className="hover:text-white transition-colors duration-200 cursor-pointer">Refund & Exchange</li>
-                        <li className="hover:text-white transition-colors duration-200 cursor-pointer">Privacy Policy</li>
+                        <li className="hover:text-white transition-colors duration-200 cursor-pointer" onClick={()=>navigate('/shipping-policy')}>Shipping Policy</li>
+                        <li className="hover:text-white transition-colors duration-200 cursor-pointer" onClick={()=>navigate('/refund-exchange')}>Refund & Exchange</li>
+                        <li className="hover:text-white transition-colors duration-200 cursor-pointer" onClick={()=>navigate('/privacy-policy')}>Privacy Policy</li>
                     </ul>
                 </div>
 
@@ -42,7 +44,7 @@ const Footer = () => {
                 <div>
                     <h1 className="text-lg font-semibold text-white mb-3">Get In Touch</h1>
                     <ul className="space-y-2 text-sm">
-                        <li className="hover:text-white transition-colors duration-200 cursor-pointer">+92 321 8984277</li>
+                        <li className="hover:text-white transition-colors duration-200 cursor-pointer">+92 318 2966076</li>
                         <li className="hover:text-white transition-colors duration-200 cursor-pointer">Email Us</li>
                     </ul>
                 </div>
@@ -51,10 +53,10 @@ const Footer = () => {
                 <div>
                     <h1 className="text-lg font-semibold text-white mb-3">Follow Us</h1>
                     <div className="flex items-center gap-x-4">
-                        <a href="#" className="hover:text-blue-500 transition-colors duration-200">
+                        <a href="https://www.facebook.com/share/1M68DciGir/?mibextid=wwXlfr" className="hover:text-blue-500 transition-colors duration-200">
                             <Facebook size={22} />
                         </a>
-                        <a href="#" className="hover:text-pink-500 transition-colors duration-200">
+                        <a href="https://www.instagram.com/sufiyan_essence_?igsh=MW0xNTd0Nno2ZDljZw%3D%3D" className="hover:text-pink-500 transition-colors duration-200" >
                             <Instagram size={22} />
                         </a>
                     </div>

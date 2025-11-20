@@ -102,7 +102,7 @@ const ShopDetails = () => {
         setIsCartOpen(true); // <-- open drawer after cart updates
         loadCart()
         // console.log(addToCart)
-        
+
     }
 
     if (!product) return <p className="text-center text-xl py-20 text-blue-600">Loading...</p>;
@@ -143,8 +143,8 @@ const ShopDetails = () => {
                                 alt="thumbnail"
                                 // MODIFIED: Ring for hover/active state, rounded-xl, subtle 3D hover
                                 className={`w-24 h-24 rounded-xl object-cover cursor-pointer transition-all duration-300 transform hover:scale-105 ${mainImage.includes(img)
-                                        ? "ring-4 ring-blue-600 shadow-lg"
-                                        : "ring-1 ring-gray-300 hover:ring-blue-300"
+                                    ? "ring-4 ring-blue-600 shadow-lg"
+                                    : "ring-1 ring-gray-300 hover:ring-blue-300"
                                     }`}
                                 onClick={() =>
                                     setMainImage(`${import.meta.env.VITE_IMAGE_API}${img}`)
@@ -189,11 +189,19 @@ const ShopDetails = () => {
                         </p>
                     </div>
 
-                    {/* FORMAT Button */}
-                    <div className="pt-2">
-                        {/* MODIFIED: Blue outline, subtle shadow, modern rounded corners, slight press effect */}
-                        <button className="text-base uppercase font-bold border-2 border-blue-600 text-blue-600 w-32 h-10 rounded-lg transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg hover:bg-blue-50/50" >{product.format}</button>
+                    {/* FORMAT & STOCK Buttons */}
+                    <div className="pt-2 flex justify-between gap-2">
+                        {/* Format Button */}
+                        <button className="text-base uppercase font-bold border-2 border-blue-600 text-blue-600 w-32 h-10 rounded-lg transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg hover:bg-blue-50/50">
+                            {product.format}
+                        </button>
+
+                        {/* Stock Button */}
+                        <button className="text-base font-bold border-2 border-gray-300 text-gray-700 w-32 h-10 rounded-lg transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg hover:bg-gray-100">
+                            Stock: {product.stock}
+                        </button>
                     </div>
+
 
                     {/* Quantity */}
                     <div className="flex items-center gap-6 pt-4">
@@ -275,7 +283,7 @@ const ShopDetails = () => {
                             Kindly place your order at the earliest to get your product as soon as possible.
                             <br />
                             <br />
-                            Call us at <span className="text-blue-600 font-semibold">03111007862</span>, or leave a voice note if you have any queries.
+                            Call us at <span className="text-blue-600 font-semibold">0318-2966076</span>, or leave a voice note if you have any queries.
                         </p>
                     )}
                 </div>

@@ -12,6 +12,10 @@ import Checkout from './pages/Checkout'
 import ThankYou from './pages/ThankYou'
 import WhatsAppButton from './components/WhatsappButton'
 import Deals from './pages/Deals'
+import FAQs from './pages/FAQs'
+import RefundExchangePolicy from './pages/RefundExchangePolicy'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import ShippingPolicy from './pages/ShippingPolicy'
 function App() {
   const { loadCart, cart } = useCart()
   useEffect(() => {
@@ -35,6 +39,10 @@ function App() {
               <Route path='/checkout' element={ <Checkout /> } />
               <Route path='/thank-you' element={<ThankYou/>} />
               <Route path='/deals' element={<Deals/>} />
+              <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
+              <Route path='/refund-exchange' element={<RefundExchangePolicy/>} />
+              <Route path='/faqs' element={<FAQs/>} />
+              <Route path='/shipping-policy' element={<ShippingPolicy/>} />
 
             </Routes>
           </main>

@@ -4,7 +4,7 @@ import { MessageCircle } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WhatsAppButton = () => {
-    const phoneNumber = "923001234567"; // <-- YOUR WHATSAPP NUMBER (without +)
+    const phoneNumber = "923182966076"; // <-- YOUR WHATSAPP NUMBER (without +)
 
     const openWhatsApp = () => {
         window.open(`https://wa.me/${phoneNumber}`, "_blank");

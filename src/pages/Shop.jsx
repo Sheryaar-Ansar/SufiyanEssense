@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ChevronDown, Grid, List, X, SlidersHorizontal } from "lucide-react";
 import * as service from '../services/service';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import notFound from '../assets/404.png'
 import hero from '../assets/shop/hero.png'
 
@@ -12,6 +12,8 @@ const Shop = () => {
     const [showSidebar, setShowSidebar] = useState(false);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [reviews, setReviews] = useState([])
+    const [searchParams] = useSearchParams()
+    const search = searchParams.get('search') || ""
 
 
 
@@ -29,8 +31,9 @@ const Shop = () => {
 
     const loadProducts = async () => {
         try {
-            const res = await service.getAllProducts();
+            const res = await service.getAllProducts(search);
             const productsData = res.data.products;
+            console.log(res)
             setProducts(productsData);
 
             // Only now fetch reviews
@@ -53,7 +56,9 @@ const Shop = () => {
             setReviews(reviewsMap);
             console.log("Reviews map:", reviewsMap); // ✅ should show now
         } catch (error) {
-            console.error("Failed to load products");
+
+            console.error("❌ Failed to load products:", error.response?.data || error.message);
+
         }
     };
 
@@ -82,7 +87,9 @@ const Shop = () => {
                 selectedFilters.includes(p.subcategory?.toLowerCase())
             );
 
-
+    useEffect(() => {
+        loadProducts();
+    }, [search]);
     useEffect(() => {
         loadProducts();
         loadCategories();
