@@ -1,6 +1,5 @@
 // src/pages/RefundExchangePolicy.jsx
 import React from "react";
-import WhatsAppButton from "../components/WhatsappButton";
 import { FaWhatsapp } from "react-icons/fa";
 
 const RefundExchangePolicy = () => {
