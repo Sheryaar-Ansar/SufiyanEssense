@@ -7,12 +7,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import { useCart } from '../contexts/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [products, setProducts] = useState([])
   const [reviews, setReviews] = useState([])
   const [allReviews, setAllReviews] = useState(0)
   const { cart, loadCart } = useCart()
+  const navigate = useNavigate()
   const loadProducts = async () => {
     try {
       const res = await service.getAllProducts()
@@ -61,7 +63,7 @@ const Home = () => {
   }, [])
 
   // Placeholder navigate function (assuming it's available from react-router-dom)
-  const navigate = (path) => console.log(`Navigating to: ${path}`);
+  // const navigate = (path) => console.log(`Navigating to: ${path}`);
 
 
   return (
@@ -101,7 +103,7 @@ const Home = () => {
               🔥 Crazy Deals
             </h1>
             <button
-              onClick={() => navigate('/perfumes/deals')}
+              onClick={() => navigate('/deals')}
               className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition group"
             >
               View All
@@ -175,7 +177,7 @@ const Home = () => {
               ✨ Best Sellers
             </h1>
             <button
-              onClick={() => navigate('/perfumes/bestsellers')}
+              onClick={() => navigate('/bestsellers')}
               className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition group"
             >
               View All

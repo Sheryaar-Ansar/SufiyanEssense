@@ -6,6 +6,7 @@ import * as service from "../services/service";
 import icon1 from '../assets/productDetail/Icon_Enhanced_Macerated.webp'
 import icon2 from '../assets/productDetail/Icon_High_EDP_Concentrations.webp'
 import icon3 from '../assets/productDetail/Icon_Safe_Ingredients_IFRA_Compliance.webp'
+import profilePicture from '../assets/productDetail/blank-profile-picture.webp'
 import { useCart } from "../contexts/CartContext";
 
 
@@ -318,7 +319,7 @@ const ShopDetails = () => {
                                 <div className="flex gap-4 items-start">
                                     {/* Static User Image - MODIFIED: Ring of blue color */}
                                     <img
-                                        src="https://i.pravatar.cc/80?img=12" // STATIC AVATAR
+                                        src={profilePicture} // STATIC AVATAR
                                         className="w-14 h-14 rounded-full object-cover ring-2 ring-blue-400"
                                     />
 

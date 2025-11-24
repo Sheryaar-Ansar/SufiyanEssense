@@ -16,6 +16,7 @@ import FAQs from './pages/FAQs'
 import RefundExchangePolicy from './pages/RefundExchangePolicy'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import ShippingPolicy from './pages/ShippingPolicy'
+import BestSeller from './pages/BestSeller'
 function App() {
   const { loadCart, cart } = useCart()
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
               <Route path='/checkout' element={ <Checkout /> } />
               <Route path='/thank-you' element={<ThankYou/>} />
               <Route path='/deals' element={<Deals/>} />
+              <Route path='/bestsellers' element={<BestSeller/>} />
               <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
               <Route path='/refund-exchange' element={<RefundExchangePolicy/>} />
               <Route path='/faqs' element={<FAQs/>} />
