@@ -13,6 +13,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import CartDrawer from "./CartDrawer";
 import * as service from '../services/service'
+import AnnouncementBar from "./AnnouncementBar";
+import se from '../assets/se.png'
 
 const Navbar = () => {
     const { cart, isCartOpen, setIsCartOpen } = useCart();
@@ -82,6 +84,8 @@ const Navbar = () => {
                         : "translate-y-0"
                 }`}
             >
+            <AnnouncementBar />
+
                 {/* TOP BAR */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex justify-between items-center">
                     
@@ -101,16 +105,17 @@ const Navbar = () => {
                     {/* LOGO */}
                     <h1
                         onClick={() => navigate("/")}
-                        className="text-3xl font-extrabold text-blue-700 tracking-wide cursor-pointer hover:scale-[1.02] transition-transform"
+                        className="flex text-3xl font-extrabold text-blue-700 tracking-wide cursor-pointer hover:scale-[1.02] transition-transform"
                     >
-                        Sufiyan Essense
+                        <img src={se} alt="" className="w-[100px]"/>
+                        
                     </h1>
 
                     {/* RIGHT ICONS (DESKTOP) */}
                     <div className="hidden md:flex gap-x-6 items-center">
                         <div className="flex items-center gap-x-2 cursor-pointer p-2 rounded-full hover:bg-blue-50">
                             <UserRound size={24} className="text-blue-600" />
-                            <h1 className="text-sm font-semibold uppercase text-blue-800">
+                            <h1 className="text-sm font-bold uppercase text-blue-800">
                                 Login
                             </h1>
                         </div>
@@ -125,7 +130,7 @@ const Navbar = () => {
                                     size={24}
                                     className="text-blue-600"
                                 />
-                                <h1 className="text-sm font-semibold uppercase text-blue-800">
+                                <h1 className="text-sm font-bold uppercase text-blue-800">
                                     Cart
                                 </h1>
                             </div>

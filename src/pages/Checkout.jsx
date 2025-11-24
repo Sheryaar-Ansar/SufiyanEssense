@@ -14,7 +14,7 @@ const calculatePrices = (items) => {
     );
 
     const taxPrice = 0;
-    const shippingPrice = 200;
+    const shippingPrice = subtotal >= 5000 ? 0 : 200;
     const total = round2(subtotal + shippingPrice + taxPrice);
 
     return {
@@ -28,6 +28,7 @@ const calculatePrices = (items) => {
 // --- ORDER SUMMARY ---
 const OrderSummary = ({ items }) => {
     const prices = useMemo(() => calculatePrices(items), [items]);
+    console.log(prices)
 
     return (
         <div className="lg:w-1/3 p-6 bg-white border border-gray-200 rounded-xl shadow-lg h-fit order-first lg:order-last">
@@ -74,7 +75,11 @@ const OrderSummary = ({ items }) => {
                     <span className="flex items-center gap-1">
                         Shipping <span className="text-xs text-blue-500 cursor-help">ⓘ</span>
                     </span>
-                    <span className="font-semibold text-green-600">FREE</span>
+                    <span className="font-semibold text-gray-700">
+                        {prices.shippingPrice === 0
+                            ? <span className="text-green-600">FREE</span>
+                            : `Rs ${prices.shippingPrice}`}
+                    </span>
                 </div>
 
                 <div className="flex justify-between items-end pt-3 border-t border-gray-300">
