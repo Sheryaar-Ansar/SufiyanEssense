@@ -253,7 +253,7 @@ const Home = () => {
                 Ready to find your perfect scent?
               </h2>
               <button
-                onClick={() => navigate('/shop')}
+                onClick={() => navigate('/perfumes')}
                 className="px-8 py-3 bg-white text-blue-700 font-bold rounded-full text-lg shadow-xl shadow-black/20 
                                            hover:bg-gray-100 transition duration-300 transform hover:scale-105"
               >
