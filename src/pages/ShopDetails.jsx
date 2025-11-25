@@ -161,7 +161,7 @@ const ShopDetails = () => {
                                     : "ring-1 ring-gray-300 hover:ring-blue-300"
                                     }`}
                                 onClick={() =>
-                                    setMainImage(img)
+                                    setMainImage(img?.[0])
                                 }
                             />
                         ))}
