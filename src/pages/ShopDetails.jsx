@@ -43,7 +43,7 @@ const ShopDetails = () => {
                 const res = await service.getProductById(id);
                 const prod = res.data.product;
                 setProduct(prod);
-                setMainImage(`${import.meta.env.VITE_IMAGE_API}${prod.images[0]}`);
+                setMainImage(prod.images[0]);
 
                 const reviewRes = await service.getReviewByProduct(prod._id);
                 setReviews(reviewRes.data.reviews || []);
@@ -161,7 +161,7 @@ const ShopDetails = () => {
                                     : "ring-1 ring-gray-300 hover:ring-blue-300"
                                     }`}
                                 onClick={() =>
-                                    setMainImage(img?.[0])
+                                    setMainImage(img)
                                 }
                             />
                         ))}
