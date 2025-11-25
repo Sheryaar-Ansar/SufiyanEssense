@@ -122,14 +122,14 @@ const Home = () => {
               >
                 <div className="w-full aspect-[3/4] overflow-hidden bg-gray-50/50">
                   <img
-                    src={`${import.meta.env.VITE_IMAGE_API}${product.images[0]}`}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     onMouseEnter={(e) =>
-                      (e.currentTarget.src = `${import.meta.env.VITE_IMAGE_API}${product.hover}`)
+                      (e.currentTarget.src = product.hover)
                     }
                     onMouseLeave={(e) =>
-                      (e.currentTarget.src = `${import.meta.env.VITE_IMAGE_API}${product.images[0]}`)
+                      (e.currentTarget.src = product.images[0])
                     }
                   />
                 </div>
@@ -196,14 +196,14 @@ const Home = () => {
               >
                 <div className="w-full aspect-[3/4] overflow-hidden bg-gray-50/50">
                   <img
-                    src={`${import.meta.env.VITE_IMAGE_API}${product.images[0]}`}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     onMouseEnter={(e) =>
-                      (e.currentTarget.src = `${import.meta.env.VITE_IMAGE_API}${product.hover}`)
+                      (e.currentTarget.src = product.hover)
                     }
                     onMouseLeave={(e) =>
-                      (e.currentTarget.src = `${import.meta.env.VITE_IMAGE_API}${product.images[0]}`)
+                      (e.currentTarget.src = product.images[0])
                     }
                   />
                 </div>
@@ -290,7 +290,7 @@ const Home = () => {
                         "{r.comment}"
                       </p>
                       <img
-                        src={`${import.meta.env.VITE_IMAGE_API}${r.images?.[0]}`}
+                        src={r.images?.[0]}
                         alt={r.username}
                         className="w-16 h-16 rounded-full object-cover border-4 border-blue-500/50 mb-3 shadow-md"
                       />

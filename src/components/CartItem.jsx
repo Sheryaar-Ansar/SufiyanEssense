@@ -24,7 +24,7 @@ const CartItem = ({ item }) => {
   return (
     <div className="flex gap-4 items-center p-4 border-b border-gray-200">
       <img
-        src={`${import.meta.env.VITE_IMAGE_API}${item.product.images?.[0]}` || ""}
+        src={`${item.product.images?.[0]}` || ""}
         alt={item.product.title}
         className="w-20 h-20 object-cover rounded-lg"
       />

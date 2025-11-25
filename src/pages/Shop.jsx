@@ -262,16 +262,16 @@ const Shop = () => {
                                 <div className="w-full aspect-square md:aspect-[3/4] overflow-hidden bg-gray-50/50">
                                     {/* Image hover effect is handled via JS, but added transition for smoother visual */}
                                     <img
-                                        src={`${import.meta.env.VITE_IMAGE_API}${product.images[0]}`}
+                                        src={product.images[0]}
                                         alt={product.name}
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                         onMouseEnter={(e) =>
                                         (e.currentTarget.src =
-                                            `${import.meta.env.VITE_IMAGE_API}${product.hover}`)
+                                            product.hover)
                                         }
                                         onMouseLeave={(e) =>
                                         (e.currentTarget.src =
-                                            `${import.meta.env.VITE_IMAGE_API}${product.images[0]}`)
+                                            product.images[0])
                                         }
                                     />
                                 </div>

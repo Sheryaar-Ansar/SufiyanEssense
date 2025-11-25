@@ -59,33 +59,46 @@ const ShopDetails = () => {
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(); // NEW — must send image as multipart/form
-        formData.append("username", newReview.username);
-        formData.append("email", newReview.email);
-        formData.append("comment", newReview.comment);
-        formData.append("rating", newReview.rating);
-        if (newReview.images?.length > 0) {
-            newReview.images.forEach(img => {
-                formData.append("images", img);  // MUST MATCH BACKEND FIELD NAME
-            });
-        }
-
         try {
-            await service.createReview(id, formData); // Make sure API accepts FormData
+            const formData = new FormData(); // must send multipart/form-data
+            formData.append("username", newReview.username);
+            formData.append("email", newReview.email);
+            formData.append("comment", newReview.comment);
+            formData.append("rating", newReview.rating);
 
-            alert("Review submitted!");
+            // Append each selected image file
+            if (newReview.images?.length > 0) {
+                newReview.images.forEach((img) => {
+                    formData.append("images", img); // must match backend field name
+                });
+            }
+
+            // Call backend API that uploads to Cloudinary
+            const res = await service.createReview(id, formData);
+
+            // Get the newly created review from response
+            const createdReview = res.data.review;
+
+            // Update frontend state instantly
+            setReviews((prev) => [createdReview, ...prev]);
+
+            // Reset review form
             setNewReview({
                 username: "",
                 email: "",
                 comment: "",
                 rating: 0,
-                image: null,
+                images: null,
             });
+
+            setReviewModalOpen(false);
+            alert("Review submitted successfully!");
         } catch (err) {
             console.error(err);
             alert("Failed to submit review");
         }
     };
+
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
     const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
@@ -137,10 +150,10 @@ const ShopDetails = () => {
 
                     {/* Thumbnails */}
                     <div className="flex gap-4 mt-6 justify-center lg:justify-start">
-                        {product.images.map((img) => (
+                        {product.images.map((img, index) => (
                             <img
-                                key={img}
-                                src={`${import.meta.env.VITE_IMAGE_API}${img}`}
+                                key={index}
+                                src={img}
                                 alt="thumbnail"
                                 // MODIFIED: Ring for hover/active state, rounded-xl, subtle 3D hover
                                 className={`w-24 h-24 rounded-xl object-cover cursor-pointer transition-all duration-300 transform hover:scale-105 ${mainImage.includes(img)
@@ -148,7 +161,7 @@ const ShopDetails = () => {
                                     : "ring-1 ring-gray-300 hover:ring-blue-300"
                                     }`}
                                 onClick={() =>
-                                    setMainImage(`${import.meta.env.VITE_IMAGE_API}${img}`)
+                                    setMainImage(img)
                                 }
                             />
                         ))}
@@ -346,7 +359,7 @@ const ShopDetails = () => {
                                                 {r.images.map((img, index) => (
                                                     <img
                                                         key={index}
-                                                        src={`${import.meta.env.VITE_IMAGE_API}${img}`}
+                                                        src={img}
                                                         //                             {/* MODIFIED: Rounded corners, border */}
                                                         alt="review"
                                                         className="w-24 h-24 object-cover rounded-xl border-2 border-white shadow-md"

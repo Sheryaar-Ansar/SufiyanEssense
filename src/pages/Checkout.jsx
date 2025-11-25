@@ -37,7 +37,7 @@ const OrderSummary = ({ items }) => {
                     <div key={item._id} className="flex items-center gap-3">
                         <div className="relative">
                             <img
-                                src={`${import.meta.env.VITE_IMAGE_API}${item.product.images[0]}`}
+                                src={item.product.images[0]}
                                 alt={item.product.title}
                                 className="w-16 h-16 object-cover rounded-lg border border-blue-200"
                             />
