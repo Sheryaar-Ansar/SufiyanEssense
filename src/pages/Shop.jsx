@@ -338,28 +338,28 @@ const Shop = () => {
                                 <img src={notFound} alt="" className="w-[700px]" />
                             </div>
                         )}
-                        <div className="flex justify-center items-center gap-4 my-10">
-                            <button
-                                disabled={page === 1}
-                                onClick={() => setPage(page - 1)}
-                                className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
-                            >
-                                Prev
-                            </button>
 
-                            <span className="text-lg font-semibold text-blue-800">
-                                Page {page} of {totalPages}
-                            </span>
+                    </div>
+                    <div className="flex justify-center items-center gap-4 my-10">
+                        <button
+                            disabled={page === 1}
+                            onClick={() => setPage(page - 1)}
+                            className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
+                        >
+                            Prev
+                        </button>
 
-                            <button
-                                disabled={page === totalPages}
-                                onClick={() => setPage(page + 1)}
-                                className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
-                            >
-                                Next
-                            </button>
-                        </div>
+                        <span className="text-lg font-semibold text-blue-800">
+                            Page {page} of {totalPages}
+                        </span>
 
+                        <button
+                            disabled={page === totalPages}
+                            onClick={() => setPage(page + 1)}
+                            className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
+                        >
+                            Next
+                        </button>
                     </div>
                 </main>
             </div>
