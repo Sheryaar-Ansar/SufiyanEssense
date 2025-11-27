@@ -2,7 +2,9 @@ import api from "./api";
 
 
 // products apis
-export const getAllProducts = (search) => api.get('/products', {params: search ? {search} : {}})
+export const getAllProducts = (params = {}) =>
+    api.get('/products', { params });
+
 export const getProductById = (id) => api.get(`products/${id}`) 
 export const getCategoryProducts = (params) => api.get('/products', { params })
 
