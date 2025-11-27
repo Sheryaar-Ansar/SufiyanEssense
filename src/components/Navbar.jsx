@@ -76,15 +76,17 @@ const Navbar = () => {
 
     return (
         <>
+
+
             {/* Navbar Wrapper */}
             <nav
                 className={`fixed top-0 left-0 w-full bg-white shadow-xl transition-transform duration-500 z-50 ${
                     scrollDirection === "down"
-                        ? "-translate-y-full"
-                        : "translate-y-0"
+                    ? "-translate-y-full"
+                    : "translate-y-0"
                 }`}
             >
-            <AnnouncementBar />
+                <AnnouncementBar />
 
                 {/* TOP BAR */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex justify-between items-center">
@@ -105,9 +107,9 @@ const Navbar = () => {
                     {/* LOGO */}
                     <h1
                         onClick={() => navigate("/")}
-                        className="flex text-3xl font-extrabold text-blue-700 tracking-wide cursor-pointer hover:scale-[1.02] transition-transform"
+                        className="flex text-xl font-extrabold text-blue-700 tracking-wide cursor-pointer hover:scale-[1.02] transition-transform"
                     >
-                        <img src={se} alt="" className="w-[100px]"/>
+                        <img src={se} alt="" className="w-[90px] h-[80px]"/>
                         
                     </h1>
 

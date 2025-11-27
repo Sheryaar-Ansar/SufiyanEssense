@@ -1,10 +1,10 @@
 
 import React, { useEffect, useState } from "react";
-import { ChevronDown, Grid, List, X, SlidersHorizontal } from "lucide-react";
+import { ChevronDown, Grid, List, X, SlidersHorizontal, ArrowLeft, ArrowRight } from "lucide-react";
 import * as service from '../services/service';
 import { useNavigate, useSearchParams } from "react-router-dom";
 import notFound from '../assets/404.png'
-import hero from '../assets/shop/hero.png'
+import hero1 from '../assets/shop/hero1.png'
 
 const Shop = () => {
     const [page, setPage] = useState(1);
@@ -119,9 +119,9 @@ const Shop = () => {
             {/* // Updated: Base background is a very light gray for modern depth. */}
             <div className="w-full h-screen-75 lg:h-screen overflow-hidden">
                 <img
-                    src={hero}
+                    src={hero1}
                     alt="Hero Background"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover"
                 />
             </div>
             <div className="flex flex-col md:flex-row bg-white min-h-screen relative">
@@ -346,7 +346,7 @@ const Shop = () => {
                             onClick={() => setPage(page - 1)}
                             className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
                         >
-                            Prev
+                            <ArrowLeft />
                         </button>
 
                         <span className="text-lg font-semibold text-blue-800">
@@ -358,7 +358,7 @@ const Shop = () => {
                             onClick={() => setPage(page + 1)}
                             className="px-4 py-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
                         >
-                            Next
+                            <ArrowRight/>
                         </button>
                     </div>
                 </main>
